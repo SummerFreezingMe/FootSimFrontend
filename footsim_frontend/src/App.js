@@ -1,25 +1,34 @@
+import {Component} from "react";
+
 class App extends Component {
   state = {
-    clients: []
+    players: []
   };
+  logo;
 
   async componentDidMount() {
-    const response = await fetch('/clients');
+    const response = await fetch('/players/get_all', {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    });
     const body = await response.json();
-    this.setState({clients: body});
+    this.setState({players: body});
   }
 
   render() {
-    const {clients} = this.state;
+    const {players} = this.state;
     return (
         <div className="App">
           <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
+            <img src={this.logo} className="App-logo" alt="logo" />
             <div className="App-intro">
               <h2>Clients</h2>
-              {clients.map(client =>
-                  <div key={client.id}>
-                    {client.name} ({client.email})
+              {players.map(player =>
+                  <div key={player.id}>
+                    {player.name} ({player.rating})
                   </div>
               )}
             </div>
