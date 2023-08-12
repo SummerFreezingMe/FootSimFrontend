@@ -43,7 +43,7 @@ class PlayerList extends Component {
                 <td>{player.rating}</td>
                 <td>
                     <ButtonGroup>
-                        <Button size="sm" color="primary" tag={Link} to={"/players/" + player.id}>Edit</Button>
+                        <Button size="sm" color="primary" tag={Link} to={"/players/update/" + player.id}>Edit</Button>
                         <Button size="sm" color="danger" onClick={() => this.remove(player.id)}>Delete</Button>
                     </ButtonGroup>
                 </td>
