@@ -55,7 +55,7 @@ class PlayerList extends Component {
                 <AppNavbar/>
                 <Container fluid>
                     <div className="float-right">
-                        <Button color="success" tag={Link} to="/players/new">Add Player</Button>
+                        <Button color="success" tag={Link} to="/players/add">Add Player</Button>
                     </div>
                     <h3>Players</h3>
                     <Table className="mt-4">

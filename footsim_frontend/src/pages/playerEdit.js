@@ -7,7 +7,8 @@ class PlayerEdit extends Component {
 
     emptyItem = {
         name: '',
-        rating: ''
+        rating: '',
+        id: ''
     };
 
     constructor(props) {
@@ -20,7 +21,7 @@ class PlayerEdit extends Component {
     }
 
     async componentDidMount() {
-        if (this.props.match.params.id !== 'new') {
+        if (this.props.match.params.id !== 'add') {
             const player = await (await fetch(`/players/update/${this.props.match.params.id}`)).json();
             this.setState({item: player});
         }
@@ -39,7 +40,7 @@ class PlayerEdit extends Component {
         event.preventDefault();
         const {item} = this.state;
 
-        await fetch('/players/update' + (item.id ? '/' + item.id : ''), {
+        await fetch('/players/'+(item.id ?'update/' +  item.id : 'add'), {
             method: (item.id) ? 'PUT' : 'POST',
             headers: {
                 'Accept': 'application/json',
